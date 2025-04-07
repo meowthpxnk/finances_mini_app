@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import ForeignKey, Integer, String
+from sqlalchemy import ForeignKey, Integer
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.schemas import LimitForm, LimitJSON
@@ -16,7 +16,7 @@ class Limit(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
 
     category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
-    category: Mapped["Category"] = relationship(back_populates="payments")
+    category: Mapped["Category"] = relationship(back_populates="limit")
 
     amount: Mapped[int] = mapped_column(Integer, nullable=False)
 
